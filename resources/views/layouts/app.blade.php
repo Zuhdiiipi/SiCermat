@@ -4,7 +4,7 @@
 
 <body>
     <div class="wrapper">
-        @include('partials.sidebar')
+        @include('partials.sidebar2')
         <div class="main-panel">
             @include('partials.header')
             <div class="container">

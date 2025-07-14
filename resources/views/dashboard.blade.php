@@ -32,11 +32,11 @@
                     <label for="kabupaten" class="form-label fw-semibold">Kabupaten</label>
                     <select name="kabupaten" id="kabupaten" class="form-select">
                         <option value="">Semua Kabupaten</option>
-                        @foreach ($regions as $region)
+                        {{-- @foreach ($regions as $region)
                             <option value="{{ $region->id }}" {{ request('kabupaten') == $region->id ? 'selected' : '' }}>
                                 {{ $region->name }}
                             </option>
-                        @endforeach
+                        @endforeach --}}
                     </select>
                 </div>
 
