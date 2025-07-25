@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h3>Daftar Komoditas - {{ ucfirst(Auth::user()->sector) }}</h3>
-    {{-- <a href="{{ route('commodities.create') }}" class="btn btn-primary mb-3">+ Tambah Komoditas</a> --}}
+    <a href="{{ route('commodities.create') }}" class="btn btn-primary mb-3">+ Tambah Komoditas</a>
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -24,10 +24,11 @@
                     <td>{{ $commodity->unit }}</td>
                     <td>
                         {{-- <a href="{{ route('commodities.edit', $commodity) }}" class="btn btn-sm btn-warning">Edit</a> --}}
-                        {{-- <form action="{{ route('commodities.destroy', $commodity) }}" method="POST" class="d-inline">
+                        <a href="{{ route('commodities.edit', $commodity) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('commodities.destroy', $commodity) }}" method="POST" class="d-inline">
                             @csrf @method('DELETE')
                             <button type="submit" onclick="return confirm('Yakin hapus?')" class="btn btn-sm btn-danger">Hapus</button>
-                        </form> --}}
+                        </form>
                     </td>
                 </tr>
             @endforeach

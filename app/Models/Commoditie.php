@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Commoditie extends Model
 {
     //
-    protected $fillable = ['name', 'category', 'unit'];
+    protected $table = 'commodities';
+    protected $fillable = ['name', 'category', 'unit','image'];
     public function prices()
     {
-        return $this->hasMany(Price::class);
+        return $this->hasMany(Price::class, 'commodity_id');
     }
 }

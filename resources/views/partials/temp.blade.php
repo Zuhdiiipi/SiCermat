@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="custom-toggle">
+    {{-- <div class="custom-toggle">
         <i class="icon-settings"></i>
-    </div>
+    </div> --}}
 </div>

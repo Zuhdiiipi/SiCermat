@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->enum('category',['pertanian','perikanan']);
             $table->string('unit');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

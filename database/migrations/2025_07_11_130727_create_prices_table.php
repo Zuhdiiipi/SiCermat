@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('commodity_id')->constrained('commodities');
-            $table->foreignId('region_id')->constrained('regions');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('commodity_id')->constrained('commodities')->onDelete('cascade');
+            $table->foreignId('region_id')->constrained('regions')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->date('date');
             $table->enum('type_price', ['produsen', 'konsumen', 'pedagang_besar']);
             $table->decimal('price',8,2);   
