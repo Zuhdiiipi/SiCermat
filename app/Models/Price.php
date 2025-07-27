@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Price extends Model
 {
     //
+    protected $table = 'prices';
     protected $fillable = [
         'commodity_id',
         'region_id',

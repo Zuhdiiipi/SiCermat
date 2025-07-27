@@ -17,6 +17,7 @@ use Illuminate\Http\Request;
 // })->name('dashboard');
 
 Route::get('/', [PublicPriceController::class, 'index'])->name('dashboard');
+Route::get('/grafik-data', [PublicPriceController::class, 'grafikData']);
 
 // Route::get('/', [CommoditieController::class, 'index'])->name('dashboard');
 
