@@ -7,6 +7,8 @@
 
     <!-- Fonts and icons -->
     <script src="{{ asset('admin') }}/assets/js/plugin/webfont/webfont.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
         WebFont.load({
             google: {
@@ -24,7 +26,6 @@
             active: function() {
                 sessionStorage.fonts = true;
             },
-            /
         });
     </script>
     <!-- CSS Files -->

@@ -10,7 +10,6 @@
                 <select name="kategori" class="form-select">
                     <option value="">Semua Kategori</option>
                     <option value="pertanian" {{ request('kategori') == 'pertanian' ? 'selected' : '' }}>Pertanian</option>
-                    {{-- <option value="perkebunan" {{ request('kategori') == 'perkebunan' ? 'selected' : '' }}>Perkebunan</option> --}}
                     <option value="perikanan" {{ request('kategori') == 'perikanan' ? 'selected' : '' }}>Perikanan</option>
                 </select>
             </div>
@@ -66,10 +65,7 @@
                     @endphp
 
                     <div class="card shadow-sm" style="min-width: 250px; max-width: 250px;">
-                        {{-- @if ($komoditas->image && Storage::exists($komoditas->image)) --}}
                         @if ($komoditas->image && file_exists(public_path('storage/' . $komoditas->image)))
-                            {{-- <img src="{{ Storage::url($komoditas->image) }}" class="card-img-top"
-                                alt="{{ $komoditas->name }}" style="height: 150px; object-fit: cover;"> --}}
                             <img src="{{ asset('storage/' . $komoditas->image) }}" class="card-img-top"
                                 alt="{{ $komoditas->name }}" style="height: 150px; object-fit: cover;">
                         @else
@@ -86,8 +82,8 @@
                                 <p class="text-muted small mb-1">
                                     Jenis: {{ ucfirst(str_replace('_', ' ', $latestPrice->type_price)) }}
                                 </p>
-                                 <p class="text-muted small mb-0">
-                                    Wilayah: 
+                                <p class="text-muted small mb-0">
+                                    Wilayah:
                                     {{ $latestPrice->region->name ?? '-' }}
                                 </p>
 
@@ -121,7 +117,11 @@
                                     <i class="{{ $statusIcon }}"></i>
                                 </p>
 
-                               
+                                {{-- Tombol lihat grafik --}}
+                                <a href="{{ route('harga.show', ['id' => $komoditas->id]) }}"
+                                    class="btn btn-outline-primary btn-sm w-100 mt-2">
+                                    Lihat Statistik
+                                </a>
                             @else
                                 <p class="text-muted">Belum ada data harga</p>
                             @endif

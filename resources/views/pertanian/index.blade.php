@@ -4,7 +4,12 @@
     <div class="container">
         {{-- <h3>Daftar Komoditas - {{ ucfirst(Auth::user()->sector) }}</h3> --}}
         <h3>Daftar Komoditas Pertanian</h3>
-        <a href="{{ route('pertanian.create') }}" class="btn btn-primary mb-3">+ Tambah Komoditas</a>
+        <br>
+        @auth
+            @if (Auth::user()->role === 'petugas_pertanian' || Auth::user()->role === 'admin')
+                <a href="{{ route('pertanian.create') }}" class="btn btn-primary mb-3">+ Tambah Komoditas</a>
+            @endif
+        @endauth
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -16,7 +21,9 @@
                     <th>Nama Komoditas</th>
                     <th>Satuan</th>
                     @auth
+                     @if (Auth::user()->role === 'petugas_pertanian' || Auth::user()->role === 'admin')
                         <th>Aksi</th>
+                        @endif
                     @endauth
                 </tr>
             </thead>
@@ -26,7 +33,7 @@
                         <td>{{ $commodity->name }}</td>
                         <td>{{ $commodity->unit }}</td>
                         @auth
-                            {{-- @if (Auth::user()->role === 'petugas_pertanian' || Auth::user()->role === 'admin') --}}
+                            @if (Auth::user()->role === 'petugas_pertanian' || Auth::user()->role === 'admin')
                                 <td>
                                     <a href="{{ route('pertanian.edit', $commodity) }}" class="btn btn-sm btn-warning">Edit</a>
                                     <form action="{{ route('pertanian.destroy', $commodity) }}" method="POST" class="d-inline">
@@ -35,7 +42,7 @@
                                             class="btn btn-sm btn-danger">Hapus</button>
                                     </form>
                                 </td>
-                            {{-- @endif --}}
+                            @endif
                         @endauth
                     </tr>
                 @endforeach

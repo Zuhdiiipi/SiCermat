@@ -42,7 +42,7 @@ class PriceController extends Controller
         ]);
 
         // Ambil tanggal awal minggu (Senin)
-        $weekStart = Carbon::parse($request->date)->startOfWeek(Carbon::MONDAY)->format('Y-m-d');
+        $weekStart = Carbon::parse($request->date)->format('Y-m-d');
 
         Price::create([
             'commodity_id' => $request->commodity_id,
@@ -79,7 +79,7 @@ class PriceController extends Controller
         ]);
 
         $price = Price::findOrFail($id);
-        $weekStart = Carbon::parse($request->date)->startOfWeek(Carbon::MONDAY)->format('Y-m-d');
+        $weekStart = Carbon::parse($request->date)->format('Y-m-d');
 
         $price->update([
             'commodity_id' => $request->commodity_id,

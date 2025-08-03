@@ -25,61 +25,19 @@
                 </li>
 
                 {{-- Tampilkan hanya untuk petugas pertanian --}}
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#komoditasPertanian" aria-expanded="false">
+                {{-- <li class="nav-item"> --}}
+                <li class="nav-item {{ request()->routeIs('pertanian.index') ? 'active' : '' }}">
+                    <a href="{{ route('pertanian.index', ['category' => 'pertanian']) }}">
                         <i class="fas fa-leaf"></i>
                         <p>Komoditas Pertanian</p>
-                        <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="komoditasPertanian">
-                        <ul class="nav nav-collapse list-unstyled">
-                            <li>
-                                <a href="{{ route('pertanian.index', ['category' => 'pertanian']) }}">
-                                    <i class="fas fa-eye me-2 ms-3"></i>
-                                    <span>Lihat Komoditas</span>
-                                </a>
-                            </li>
-                            @auth
-                                @if (Auth::user()->role === 'petugas_pertanian' || Auth::user()->role === 'admin')
-                                    <li>
-                                        <a href="{{ route('pertanian.create', ['category' => 'pertanian']) }}">
-                                            <i class="fas fa-plus-circle me-2 ms-3"></i>
-                                            <span>Tambah Komoditas</span>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endauth
-                        </ul>
-                    </div>
                 </li>
 
-                {{-- Tampilkan hanya untuk petugas perikanan --}}
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#komoditasPerikanan" aria-expanded="false">
+                <li class="nav-item {{ request()->routeIs('perikanan.index') ? 'active' : '' }}">
+                    <a href="{{ route('perikanan.index', ['category' => 'perikanan']) }}">
                         <i class="fas fa-fish"></i>
                         <p>Komoditas Perikanan</p>
-                        <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="komoditasPerikanan">
-                        <ul class="nav nav-collapse list-unstyled">
-                            <li>
-                                <a href="{{ route('perikanan.index', ['category' => 'perikanan']) }}">
-                                    <i class="fas fa-eye me-2 ms-3"></i>
-                                    <span>Lihat Komoditas</span>
-                                </a>
-                            </li>
-                            @auth
-                                @if (Auth::user()->role === 'petugas_perikanan' || Auth::user()->role === 'admin')
-                                    <li>
-                                        <a href="{{ route('perikanan.create', ['category' => 'perikanan']) }}">
-                                            <i class="fas fa-plus-circle me-2 ms-3"></i>
-                                            <span>Tambah Komoditas</span>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endauth
-                        </ul>
-                    </div>
                 </li>
 
                 {{-- Admin khusus (opsional): kelola user dan wilayah --}}
@@ -99,33 +57,11 @@
                         </li>
                     @endif
                 @endauth
-
-                <li class="nav-item">
-                    <a data-bs-toggle="collapse" href="#harga" aria-expanded="false">
-                        <i class="fas fa-leaf"></i>
+                <li class="nav-item {{ request()->routeIs('prices.index') ? 'active' : '' }}">
+                    <a href="{{ route('prices.index') }}">
+                        <i class="fas fa-money-bill-wave"></i>
                         <p>Harga</p>
-                        <span class="caret"></span>
                     </a>
-                    <div class="collapse" id="harga">
-                        <ul class="nav nav-collapse list-unstyled">
-                            <li>
-                                <a href="{{ route('prices.index') }}">
-                                    <i class="fas fa-eye me-2 ms-3"></i>
-                                    <span>Lihat Harga</span>
-                                </a>
-                            </li>
-                            @auth
-                                @if (Auth::user()->role === 'petugas_pertanian' || Auth::user()->role === 'admin')
-                                    <li>
-                                        <a href="{{ route('prices.create') }}">
-                                            <i class="fas fa-plus-circle me-2 ms-3"></i>
-                                            <span>Tambah Harga</span>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endauth
-                        </ul>
-                    </div>
                 </li>
 
                 {{-- Authentication --}}
@@ -145,16 +81,6 @@
                                 </a>
                             </li>
                             @auth
-                                {{-- <li>
-                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        <button type="submit" class="btn btn-link"
-                                            style="text-decoration: none; color: inherit; padding: 0;">
-                                            <i class="fas fa-sign-out-alt me-2 ms-3"></i>
-                                            <span>Logout</span>
-                                        </button>
-                                    </form>
-                                </li> --}}
                                 <li>
                                     <a href="#"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

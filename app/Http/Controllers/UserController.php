@@ -11,9 +11,11 @@ class UserController extends Controller
     //
     public function index()
     {
-        $users = User::all();
+        // Ambil semua pengguna, kecuali yang memiliki role 'admin'
+        $users = User::where('role', '!=', 'admin')->get();
         return view('users.index', compact('users'));
     }
+
 
     // Form tambah user
     public function create()
@@ -75,4 +77,5 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('users.index')->with('success', 'Akun berhasil dihapus.');
     }
+
 }

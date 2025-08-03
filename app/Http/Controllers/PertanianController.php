@@ -51,6 +51,7 @@ class PertanianController extends Controller
             'image'    => 'nullable|image|mimes:jpg,jpeg,png', // max 2MB
         ]);
         $imageName = null;
+        $imagePath = null;
         if ($request->hasFile('image')) {
             $imageName = time() . '_' . uniqid() . '.' . $request->image->extension();
             $imagePath = $request->image->storeAs('commodities', $imageName, 'public');
